@@ -130,6 +130,10 @@ const Router = createBrowserRouter([
 
       // for Moderator
       {
+        path: "moderatorProfile",
+        element: <UserProfile />,
+      },
+      {
         path: "productReview",
         element: (
           <ModeratorRoute>
@@ -146,6 +150,10 @@ const Router = createBrowserRouter([
         ),
       },
       // for Admin
+      {
+        path: "adminProfile",
+        element: <UserProfile />,
+      },
       {
         path: "statistics",
         element: (

@@ -22,7 +22,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from?.pathname || "/";
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -38,19 +38,30 @@ const Login = () => {
       await signIn(email, password);
       const user = allUsers?.find((user) => user.email === email);
 
-      console.log(user.role);
+      let from;
       if (user.role === "admin") {
-        navigate("/dashboard/statistics", { replace: true });
+        from = location.state?.from?.pathname || "/dashboard/adminProfile";
       } else if (user.role === "moderator") {
-        navigate("/dashboard/productReview", { replace: true });
+        from = location.state?.from?.pathname || "/dashboard/moderatorProfile";
+      } else {
+        from = location.state?.from?.pathname || "/";
       }
+
+      // if (user.role === "admin") {
+      //   navigate("/dashboard/adminProfile", { replace: true });
+      // } else if (user.role === "moderator") {
+      //   navigate("/dashboard/moderatorProfile", { replace: true });
+      // }
       // console.log("isAdmin:", isAdmin);
       // console.log("isModerator:", isModerator);
-      else {
-        navigate(from, { replace: true });
-      }
-      // navigate(from, { replace: true });
-      toast("You have successfully logged in");
+      // else {
+      //   navigate(from, { replace: true });
+      // }
+      navigate(from, { replace: true });
+      toast("You have successfully logged in", {
+        type: "success",
+        autoClose: 1000,
+      });
     } catch (error) {
       swal("Oops!", error.message, "error");
     }
