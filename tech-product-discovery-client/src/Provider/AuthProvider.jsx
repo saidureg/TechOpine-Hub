@@ -3,9 +3,11 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateEmail,
   updateProfile,
 } from "firebase/auth";
 import PropTypes from "prop-types";
@@ -34,6 +36,16 @@ const AuthProvider = ({ children }) => {
       displayName: name,
       photoURL: photoURL,
     });
+  };
+
+  const SendEmailVerification = () => {
+    setLoading(true);
+    return sendEmailVerification(auth.currentUser);
+  };
+
+  const UpdatedUserEmail = (email) => {
+    setLoading(true);
+    return updateEmail(auth.currentUser, email);
   };
 
   const logOut = () => {
@@ -72,9 +84,12 @@ const AuthProvider = ({ children }) => {
     createUser,
     signIn,
     updatedUserProfile,
+    SendEmailVerification,
+    UpdatedUserEmail,
     logOut,
     googleLogin,
     loading,
+    setLoading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

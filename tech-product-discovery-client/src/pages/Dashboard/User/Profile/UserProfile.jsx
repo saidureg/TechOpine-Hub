@@ -3,8 +3,12 @@ import useAuth from "../../../../hooks/useAuth";
 import usePayment from "../../../../hooks/usePayment";
 import useAdmin from "../../../../hooks/useAdmin";
 import useModerator from "../../../../hooks/useModerator";
+import Modal from "../../../../components/Shared/Modal/Modal";
+import { useState } from "react";
+import UpdatedProfile from "../../../../components/UpdatedProfile/UpdatedProfile";
 
 const UserProfile = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
   const [payments] = usePayment();
   const [isAdmin] = useAdmin();
@@ -58,9 +62,20 @@ const UserProfile = () => {
                 <span className="font-bold text-black ">{user?.email}</span>
               </p>
               <div>
-                <button className="bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1">
-                  Update Profile
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1"
+                >
+                  Edit My Profile
                 </button>
+                <Modal
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  title=""
+                  titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
+                >
+                  <UpdatedProfile setIsOpen={setIsOpen} />
+                </Modal>
                 <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
                   Change Password
                 </button>
