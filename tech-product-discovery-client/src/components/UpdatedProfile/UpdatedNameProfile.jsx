@@ -28,7 +28,7 @@ const UpdatedNameProfile = ({ setIsOpen }) => {
       <h3 className="text-xl font-medium py-2">
         Update Name & Profile Picture
       </h3>
-      <p className="text-lg text-gray-400 pb-5">
+      <p className="text-sm text-gray-400 pb-5">
         Use this form to update your Profile
       </p>
       <form onSubmit={handleUpdateProfile} className="flex flex-col space-y-4">

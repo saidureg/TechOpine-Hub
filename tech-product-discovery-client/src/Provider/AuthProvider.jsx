@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  const SendEmailVerification = () => {
+  const emailVerification = () => {
     setLoading(true);
     return sendEmailVerification(auth.currentUser);
   };
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signIn,
     updatedUserProfile,
-    SendEmailVerification,
+    emailVerification,
     UpdatedUserEmail,
     logOut,
     googleLogin,

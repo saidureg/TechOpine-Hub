@@ -57,6 +57,7 @@ const Login = () => {
       // else {
       //   navigate(from, { replace: true });
       // }
+      // navigate("/", { replace: true });
       navigate(from, { replace: true });
       toast("You have successfully logged in", {
         type: "success",

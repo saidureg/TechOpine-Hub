@@ -4,9 +4,12 @@ import UpdatedNameProfile from "./UpdatedNameProfile";
 import { MdArrowForwardIos } from "react-icons/md";
 import Modal from "../Shared/Modal/Modal";
 import { useState } from "react";
+import UpdatedEmail from "./UpdatedEmail";
+// import UpdatedEmailWithVerify from "./UpdatedEmailWithVerify";
 
 const UpdatedProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpdateEmail, setIsUpdateEmail] = useState(false);
   const { user } = useAuth();
 
   const handleUpdateProfile = () => {
@@ -44,9 +47,21 @@ const UpdatedProfile = () => {
           {/* <UpdatedProfile isOpen={isOpen} setIsOpen={setIsOpen} /> */}
           <UpdatedNameProfile setIsOpen={setIsOpen} />
         </Modal>
-        <button className=" px-3 py-3 rounded-lg font-semibold cursor-pointer hover:bg-base-100 flex justify-between w-full">
+        <button
+          onClick={() => setIsUpdateEmail(!isUpdateEmail)}
+          className=" px-3 py-3 rounded-lg font-semibold cursor-pointer hover:bg-base-100 flex justify-between w-full"
+        >
           Email
           <MdArrowForwardIos className="text-xl" />
+          <Modal
+            isOpen={isUpdateEmail}
+            setIsOpen={setIsUpdateEmail}
+            title=""
+            titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
+          >
+            <UpdatedEmail setIsUpdateEmail={setIsUpdateEmail} />
+            {/* <UpdatedEmailWithVerify setIsUpdateEmail={setIsUpdateEmail} /> */}
+          </Modal>
         </button>
       </div>
     </div>
