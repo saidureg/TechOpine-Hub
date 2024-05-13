@@ -24,27 +24,35 @@ const UpdatedNameProfile = ({ setIsOpen }) => {
       });
   };
   return (
-    <form onSubmit={handleUpdateProfile} className="flex flex-col space-y-4">
-      <input
-        type="text"
-        placeholder="Name"
-        name="name"
-        className="border p-2 rounded-lg"
-      />
-      <input
-        type="text"
-        name="photoURL"
-        placeholder="Photo URL"
-        className="border p-2 rounded-lg"
-      />
+    <div>
+      <h3 className="text-xl font-medium py-2">
+        Update Name & Profile Picture
+      </h3>
+      <p className="text-lg text-gray-400 pb-5">
+        Use this form to update your Profile
+      </p>
+      <form onSubmit={handleUpdateProfile} className="flex flex-col space-y-4">
+        <input
+          type="text"
+          placeholder="Name"
+          name="name"
+          className="border p-2 rounded-lg"
+        />
+        <input
+          type="text"
+          name="photoURL"
+          placeholder="Photo URL"
+          className="border p-2 rounded-lg"
+        />
 
-      <button
-        type="submit"
-        className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]"
-      >
-        Update Profile
-      </button>
-    </form>
+        <button
+          type="submit"
+          className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]"
+        >
+          Update Profile
+        </button>
+      </form>
+    </div>
   );
 };
 

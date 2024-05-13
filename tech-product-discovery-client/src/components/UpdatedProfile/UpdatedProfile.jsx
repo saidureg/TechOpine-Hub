@@ -1,9 +1,18 @@
 import PropTypes from "prop-types";
 import useAuth from "../../hooks/useAuth";
 import UpdatedNameProfile from "./UpdatedNameProfile";
+import { MdArrowForwardIos } from "react-icons/md";
+import Modal from "../Shared/Modal/Modal";
+import { useState } from "react";
 
-const UpdatedProfile = ({ setIsOpen }) => {
+const UpdatedProfile = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { user } = useAuth();
+
+  const handleUpdateProfile = () => {
+    setIsOpen(!isOpen);
+    // onCancel();
+  };
 
   return (
     <div>
@@ -18,13 +27,35 @@ const UpdatedProfile = ({ setIsOpen }) => {
         </label>
         <h3 className="text-xl font-medium my-4">{user?.displayName}</h3>
       </div>
-      <UpdatedNameProfile setIsOpen={setIsOpen} />
+      <div className="bg-base-200 divide-y-2 rounded-lg">
+        <button
+          onClick={handleUpdateProfile}
+          className=" px-3 py-3 rounded-lg font-semibold cursor-pointer hover:bg-base-100 flex justify-between w-full"
+        >
+          Name & Profile picture
+          <MdArrowForwardIos className="text-xl" />
+        </button>
+        <Modal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          title=""
+          titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
+        >
+          {/* <UpdatedProfile isOpen={isOpen} setIsOpen={setIsOpen} /> */}
+          <UpdatedNameProfile setIsOpen={setIsOpen} />
+        </Modal>
+        <button className=" px-3 py-3 rounded-lg font-semibold cursor-pointer hover:bg-base-100 flex justify-between w-full">
+          Email
+          <MdArrowForwardIos className="text-xl" />
+        </button>
+      </div>
     </div>
   );
 };
 
 UpdatedProfile.propTypes = {
   setIsOpen: PropTypes.func,
+  onCancel: PropTypes.func,
 };
 
 export default UpdatedProfile;

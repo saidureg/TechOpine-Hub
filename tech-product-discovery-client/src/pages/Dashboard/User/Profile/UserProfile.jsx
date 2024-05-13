@@ -14,6 +14,15 @@ const UserProfile = () => {
   const [isAdmin] = useAdmin();
   const [isModerator] = useModerator();
 
+  // const onCancel = () => {
+  //   setIsOpen(false);
+  // };
+
+  const handleUpdateProfile = () => {
+    setIsOpen(!isOpen);
+    // onCancel();
+  };
+
   return (
     <div className="flex justify-center items-center lg:h-screen">
       <Helmet>
@@ -63,7 +72,7 @@ const UserProfile = () => {
               </p>
               <div>
                 <button
-                  onClick={() => setIsOpen(!isOpen)}
+                  onClick={handleUpdateProfile}
                   className="bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1"
                 >
                   Edit My Profile
@@ -74,7 +83,8 @@ const UserProfile = () => {
                   title=""
                   titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
                 >
-                  <UpdatedProfile setIsOpen={setIsOpen} />
+                  {/* <UpdatedProfile setIsOpen={setIsOpen} /> */}
+                  <UpdatedProfile />
                 </Modal>
                 <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
                   Change Password
