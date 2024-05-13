@@ -6,9 +6,12 @@ import {
   updateEmail,
 } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UpdatedEmail = ({ setIsUpdateEmail }) => {
-  const { setLoading } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { user, setLoading } = useAuth();
   const onCancel = () => {
     setIsUpdateEmail(false);
     setLoading(false);
@@ -27,39 +30,44 @@ const UpdatedEmail = ({ setIsUpdateEmail }) => {
     setLoading(true);
     try {
       await reauthenticate(currentPassword);
-      await updateEmail(auth.currentUser, email);
-      setLoading(false);
-      console.log("Email updated successfully");
+      const res = await axiosSecure.patch(`/users/${user.email}`, {
+        email,
+      });
+      if (res.data.modifiedCount) {
+        await updateEmail(auth.currentUser, email);
+        toast.success("Email updated successfully", {
+          autoClose: 1000,
+        });
+        setLoading(false);
+      } else {
+        toast.error("Email not updated", {
+          autoClose: 1000,
+        });
+      }
     } catch (error) {
       console.error("Error updating email:", error);
+      toast.error("Email not updated", {
+        autoClose: 1000,
+      });
       setLoading(false);
       throw error; // Rethrow the error to be caught by the caller
     }
   };
-
-  //   const handleEmailVerification = () => {
-  //     emailVerification()
-  //       .then(() => {
-  //         console.log("Email sent successfully");
-  //         setLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   };
 
   const handleUpdateEmail = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const currentPassword = form.password.value;
-    console.log(email, currentPassword);
     onCancel();
     UpdatedUserEmail(email, currentPassword)
       .then(() => {
-        console.log("Email updated successfully");
+        // console.log("Email updated successfully");
       })
       .catch((error) => {
+        toast.error("Email not updated", {
+          autoClose: 1000,
+        });
         console.log(error);
       });
   };

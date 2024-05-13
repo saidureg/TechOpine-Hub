@@ -138,6 +138,32 @@ async function run() {
       res.send(result);
     });
 
+    app.patch("/users/:email", verifyToken, async (req, res) => {
+      const email = req.params.email;
+      const item = req.body;
+
+      const filter = { email: email };
+      if (item.name) {
+        const updateDoc = {
+          $set: {
+            name: item.name,
+          },
+        };
+        const result = await userCollection.updateOne(filter, updateDoc);
+        res.send(result);
+      } else if (item.email) {
+        const updateDoc = {
+          $set: {
+            email: item.email,
+          },
+        };
+        const result = await userCollection.updateOne(filter, updateDoc);
+        res.send(result);
+      } else {
+        return res.send({ message: "No data to update", modifiedCount: 0 });
+      }
+    });
+
     app.patch(
       "/users/admin/:id",
       verifyToken,

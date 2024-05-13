@@ -1,8 +1,11 @@
 import useAuth from "../../hooks/useAuth";
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const UpdatedNameProfile = ({ setIsOpen }) => {
-  const { updatedUserProfile, setLoading } = useAuth();
+  const axiosSecure = useAxiosSecure();
+  const { user, updatedUserProfile, setLoading } = useAuth();
   const onCancel = () => {
     setIsOpen(false);
     setLoading(false);
@@ -13,14 +16,40 @@ const UpdatedNameProfile = ({ setIsOpen }) => {
     const name = form.name.value;
     const photoURL = form.photoURL.value;
     console.log(name, photoURL);
-    updatedUserProfile(name, photoURL)
-      .then(() => {
-        console.log("User updated successfully");
-        onCancel();
-        setLoading(false);
+    const updatedUserInfo = {
+      name,
+      photoURL,
+    };
+
+    axiosSecure
+      .patch(`/users/${user.email}`, updatedUserInfo)
+      .then((res) => {
+        if (res.data.modifiedCount) {
+          updatedUserProfile(name, photoURL)
+            .then(() => {
+              toast.success("Profile updated successfully", {
+                autoClose: 1000,
+              });
+              onCancel();
+              setLoading(false);
+            })
+            .catch((error) => {
+              toast.error("Profile not updated", {
+                autoClose: 1000,
+              });
+              console.log(error);
+            });
+        } else {
+          toast.error("Profile not updated", {
+            autoClose: 2000,
+          });
+        }
       })
       .catch((error) => {
         console.log(error);
+        toast.error("Profile not updated", {
+          autoClose: 1000,
+        });
       });
   };
   return (
