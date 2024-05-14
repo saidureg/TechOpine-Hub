@@ -1,4 +1,4 @@
-import { FaFacebook, FaGithub } from "react-icons/fa6";
+import { FaFacebook, FaGithub, FaRegEye } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
@@ -9,7 +9,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
 const Login = () => {
-  const { signIn } = useAuth();
+  const { signIn, passwordReset } = useAuth();
   const axiosPublic = useAxiosPublic();
   const { data: allUsers } = useQuery({
     queryKey: ["allUsers"],
@@ -91,6 +91,28 @@ const Login = () => {
   //       swal("Oops!", error.message, "error");
   //     });
   // };
+
+  const handleForgotPassword = () => {
+    swal({
+      title: "Forgot Password?",
+      text: "Enter your email to get a password reset link",
+      content: "input",
+      buttons: ["Cancel", "Send Email"],
+    }).then((value) => {
+      if (value) {
+        passwordReset(value)
+          .then(() => {
+            swal("An email has been sent to your email address", {
+              icon: "success",
+            });
+          })
+          .catch(() => {
+            swal("Oops!", "Enter a valid email", "error");
+          });
+      }
+    });
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto mt-24 lg:mt-44">
       <Helmet>
@@ -103,8 +125,8 @@ const Login = () => {
           </h3>
         </div>
         <form onSubmit={handleLogin}>
-          <div className="flex flex-col gap-4 p-6 space-y-6">
-            <div className="form-control relative h-11 w-full min-w-[200px]">
+          <div className="flex flex-col gap-4 p-6 space-y-3">
+            <div className="form-control relative h-11 w-full min-w-[200px] mb-2">
               <input
                 type="email"
                 name="email"
@@ -116,7 +138,7 @@ const Login = () => {
                 Email*
               </label>
             </div>
-            <div className="form-control relative h-11 w-full min-w-[200px]">
+            <div className="form-control relative h-11 w-full min-w-[200px] mb-2 flex">
               <input
                 type="password"
                 name="password"
@@ -127,7 +149,16 @@ const Login = () => {
               <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                 Password*
               </label>
+              <p>
+                <FaRegEye />
+              </p>
             </div>
+            <p
+              onClick={handleForgotPassword}
+              className="text-lg text-gray-500 cursor-pointer hover:text-pink-500 font-medium "
+            >
+              Forgot Password?
+            </p>
           </div>
           <div className="form-control p-6 pt-0">
             <button
