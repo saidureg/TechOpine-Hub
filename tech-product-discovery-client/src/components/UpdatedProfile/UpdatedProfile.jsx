@@ -56,7 +56,7 @@ const UpdatedProfile = () => {
           <Modal
             isOpen={isUpdateEmail}
             setIsOpen={setIsUpdateEmail}
-            title=""
+            title="Update Email Address"
             titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
           >
             <UpdatedEmail setIsUpdateEmail={setIsUpdateEmail} />

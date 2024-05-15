@@ -6,9 +6,11 @@ import useModerator from "../../../../hooks/useModerator";
 import Modal from "../../../../components/Shared/Modal/Modal";
 import { useState } from "react";
 import UpdatedProfile from "../../../../components/UpdatedProfile/UpdatedProfile";
+import UpdatedPassword from "../../../../components/UpdatedProfile/UpdatedPassword";
 
 const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpdatePassword, setIsUpdatePassword] = useState(false);
   const { user } = useAuth();
   const [payments] = usePayment();
   const [isAdmin] = useAdmin();
@@ -86,9 +88,23 @@ const UserProfile = () => {
                   {/* <UpdatedProfile setIsOpen={setIsOpen} /> */}
                   <UpdatedProfile />
                 </Modal>
-                <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
+                <button
+                  onClick={() => setIsUpdatePassword(!isUpdatePassword)}
+                  className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]"
+                >
                   Change Password
                 </button>
+                <Modal
+                  isOpen={isUpdatePassword}
+                  setIsOpen={setIsUpdatePassword}
+                  title="Update Password"
+                  titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
+                >
+                  <UpdatedPassword
+                    setIsUpdatePassword={setIsUpdatePassword}
+                    isUpdatePassword={isUpdatePassword}
+                  />
+                </Modal>
               </div>
             </div>
           </div>

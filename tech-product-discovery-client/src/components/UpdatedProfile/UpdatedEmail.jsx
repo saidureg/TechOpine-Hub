@@ -73,7 +73,6 @@ const UpdatedEmail = ({ setIsUpdateEmail }) => {
   };
   return (
     <div>
-      <h3 className="text-xl font-medium py-2">Update Email Address</h3>
       <p className="text-sm text-gray-400 pb-5">
         Use this form to update your Email
       </p>
