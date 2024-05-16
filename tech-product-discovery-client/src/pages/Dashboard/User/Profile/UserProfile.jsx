@@ -97,7 +97,7 @@ const UserProfile = () => {
                 <Modal
                   isOpen={isUpdatePassword}
                   setIsOpen={setIsUpdatePassword}
-                  title="Update Password"
+                  title="Change Password"
                   titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
                 >
                   <UpdatedPassword

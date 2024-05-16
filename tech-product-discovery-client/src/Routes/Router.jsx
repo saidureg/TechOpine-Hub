@@ -27,6 +27,7 @@ import ManageCoupons from "../pages/Dashboard/Admin/ManageCoupons/ManageCoupons"
 import UpdateCoupon from "../pages/Dashboard/Admin/ManageCoupons/UpdateCoupon";
 import ViewCoupon from "../pages/Dashboard/Admin/ManageCoupons/ViewCoupon";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
+import Settings from "../pages/Dashboard/Settings/Settings";
 
 const Router = createBrowserRouter([
   {
@@ -104,6 +105,10 @@ const Router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "settings",
+        element: <Settings />,
+      },
       // for user
       {
         path: "userProfile",

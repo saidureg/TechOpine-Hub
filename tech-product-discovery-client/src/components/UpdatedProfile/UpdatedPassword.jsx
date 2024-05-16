@@ -3,7 +3,6 @@ import {
   reauthenticateWithCredential,
   updatePassword,
 } from "firebase/auth";
-// import { auth } from "../../firebase/firebase.config";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
@@ -15,83 +14,47 @@ const UpdatedPassword = ({ setIsUpdatePassword, isUpdatePassword }) => {
     setLoading(false);
   };
 
-  //   const reauthenticate = (currentPassword) => {
-  //     // const user = auth.currentUser;
-  //     const credential = EmailAuthProvider.credential(
-  //       user.email,
-  //       currentPassword
-  //     );
-  //     return reauthenticateWithCredential(user, credential);
-  //   };
-
-  //   const UpdatedUserPassword = async (currentPassword, newPassword) => {
-  //     setLoading(true);
-  //     try {
-  //       await reauthenticate(currentPassword);
-  //       await updatePassword(user, newPassword);
-  //     } catch (error) {
-  //       console.error("Error updating email:", error);
-  //       toast.error("Email not updated", {
-  //         autoClose: 1000,
-  //       });
-  //       setLoading(false);
-  //       throw error; // Rethrow the error to be caught by the caller
-  //     }
-  //   };
-
   const handleUpdatePassword = (e) => {
     e.preventDefault();
     const form = e.target;
     const currentPassword = form.current_password.value;
     const newPassword = form.new_password.value;
-    onCancel();
-    reauthenticateWithCredential(
-      user,
-      EmailAuthProvider.credential(user.email, currentPassword)
-    )
-      .then(() => {
-        updatePassword(user, newPassword)
-          .then(() => {
-            toast.success("Password updated successfully", {
-              autoClose: 1000,
-            });
-            setLoading(false);
-          })
-          .catch((error) => {
-            toast.error("Password not updated", {
-              autoClose: 1000,
-            });
-            console.log(error);
-          });
-      })
-      .catch((error) => {
-        toast.error("Invalid Current Password", {
-          autoClose: 1000,
-        });
-        console.log(error);
+    const confirmPassword = form.confirm_password.value;
+
+    if (newPassword !== confirmPassword) {
+      toast.error("Passwords do not match", {
+        autoClose: 1000,
       });
+    } else {
+      onCancel();
+      reauthenticateWithCredential(
+        user,
+        EmailAuthProvider.credential(user.email, currentPassword)
+      )
+        .then(() => {
+          updatePassword(user, newPassword)
+            .then(() => {
+              toast.success("Password updated successfully", {
+                autoClose: 1000,
+              });
+              setLoading(false);
+            })
+            .catch((error) => {
+              toast.error("Password not updated", {
+                autoClose: 1000,
+              });
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          toast.error("Invalid Current Password", {
+            autoClose: 1000,
+          });
+          console.log(error);
+        });
+    }
   };
-  //   const handleUpdatePassword = (e) => {
-  //     e.preventDefault();
-  //     const form = e.target;
-  //     const currentPassword = form.current_password.value;
-  //     const newPassword = form.new_password.value;
-  //     onCancel();
-  //     UpdatedUserPassword(currentPassword, newPassword)
-  //       .then(() => {
-  //         // console.log("Email updated successfully");
-  //         toast.success("Password updated successfully", {
-  //           autoClose: 1000,
-  //         });
-  //         setLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         toast.error("Password not updated", {
-  //           autoClose: 1000,
-  //         });
-  //         console.log(error);
-  //       });
-  //   };
+
   return (
     <div>
       <p className="text-sm text-gray-400 pb-5">
@@ -108,6 +71,12 @@ const UpdatedPassword = ({ setIsUpdatePassword, isUpdatePassword }) => {
           type="password"
           placeholder="New Password"
           name="new_password"
+          className="border p-2 rounded-lg"
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          name="confirm_password"
           className="border p-2 rounded-lg"
         />
 

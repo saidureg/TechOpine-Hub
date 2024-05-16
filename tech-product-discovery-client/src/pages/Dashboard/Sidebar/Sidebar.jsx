@@ -3,6 +3,7 @@ import MenuItem from "./MenuItem";
 import { GrLogout } from "react-icons/gr";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaHome } from "react-icons/fa";
+import { IoSettingsOutline } from "react-icons/io5";
 import UserMenu from "./Menu/UserMenu";
 import useAuth from "../../../hooks/useAuth";
 import Logo from "../../../components/Shared/Logo";
@@ -72,6 +73,11 @@ const Sidebar = () => {
           <hr className="border-[#E76F51]" />
 
           <MenuItem icon={FaHome} label="Home" address="/" />
+          <MenuItem
+            icon={IoSettingsOutline}
+            label="Settings"
+            address="/dashboard/settings"
+          />
           <button
             onClick={logOut}
             className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
