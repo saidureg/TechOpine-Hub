@@ -149,9 +149,12 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="gap-3 text-sm md:text-base lg:text-xl">
+                      <Link
+                        className="gap-3 text-sm md:text-base lg:text-xl"
+                        to={"/dashboard/settings"}
+                      >
                         <IoSettingsOutline /> Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a className="gap-3 text-sm md:text-base lg:text-lg">
