@@ -14,11 +14,15 @@ import Logo from "../Logo";
 import useAdmin from "../../../hooks/useAdmin";
 import useModerator from "../../../hooks/useModerator";
 import DropdownLayout from "../../Ui/DropdownLayout";
+import Modal from "../Modal/Modal";
+import UpdatedPassword from "../../UpdatedProfile/UpdatedPassword";
+import { useState } from "react";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [isAdmin] = useAdmin();
   const [isModerator] = useModerator();
+  const [isUpdatePassword, setIsUpdatePassword] = useState(false);
   const navLinks = (
     <div className=" gap-2 flex flex-col lg:flex-row ">
       <Navlinks path="/" route="Home" />
@@ -157,9 +161,23 @@ const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="gap-3 text-sm md:text-base lg:text-lg">
+                      <a
+                        onClick={() => setIsUpdatePassword(!isUpdatePassword)}
+                        className="gap-3 text-sm md:text-base lg:text-lg"
+                      >
                         <IoKey className="text-xl" /> Change Password
                       </a>
+                      <Modal
+                        isOpen={isUpdatePassword}
+                        setIsOpen={setIsUpdatePassword}
+                        title="Change Password"
+                        titleStyle="text-xl font-medium leading-6 text-gray-900 text-center mb-4"
+                      >
+                        <UpdatedPassword
+                          setIsUpdatePassword={setIsUpdatePassword}
+                          isUpdatePassword={isUpdatePassword}
+                        />
+                      </Modal>
                     </li>
                     <div className=" px-3 pt-2 text-base md:text-lg lg:text-xl">
                       <button
