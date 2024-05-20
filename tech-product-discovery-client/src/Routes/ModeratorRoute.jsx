@@ -2,13 +2,14 @@ import PropTypes from "prop-types";
 import useAuth from "../hooks/useAuth";
 import { Navigate, useLocation } from "react-router-dom";
 import useModerator from "../hooks/useModerator";
+import SuspenseContent from "../containers/SuspenseContent";
 
 const ModeratorRoute = ({ children }) => {
   const [isModerator, isModeratorLoading] = useModerator();
   const { user, loading } = useAuth();
   const location = useLocation();
   if (loading || isModeratorLoading) {
-    return <span className="loading loading-dots loading-lg"></span>;
+    return <SuspenseContent />;
   }
   if (user && isModerator) {
     return children;

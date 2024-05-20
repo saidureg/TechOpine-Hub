@@ -2,13 +2,14 @@ import { Navigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import useAdmin from "../hooks/useAdmin";
 import useAuth from "../hooks/useAuth";
+import SuspenseContent from "../containers/SuspenseContent";
 
 const AdminRoute = ({ children }) => {
   const [isAdmin, isAdminLoading] = useAdmin();
   const { user, loading } = useAuth();
   const location = useLocation();
   if (loading || isAdminLoading) {
-    return <span className="loading loading-dots loading-lg"></span>;
+    return <SuspenseContent />;
   }
   if (user && isAdmin) {
     return children;
