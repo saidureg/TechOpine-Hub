@@ -28,6 +28,7 @@ import UpdateCoupon from "../pages/Dashboard/Admin/ManageCoupons/UpdateCoupon";
 import ViewCoupon from "../pages/Dashboard/Admin/ManageCoupons/ViewCoupon";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
 import Settings from "../pages/Dashboard/Settings/Settings";
+import Layout from "../containers/Layout";
 
 const Router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const Router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/admin/layout",
+    element: <Layout />,
   },
   {
     path: "dashboard",
