@@ -1,11 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdSunny } from "react-icons/md";
 import { FaMoon, FaRegBell, FaBars } from "react-icons/fa";
+import useAuth from "../hooks/useAuth";
+import swal from "sweetalert";
+import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { useState } from "react";
+import DropdownLayout from "../components/Ui/DropdownLayout";
 
 const Header = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+  const [isExpanded, setIsExpanded] = useState(false);
   const pageTitle = "Dashboard";
   const currentTheme = "dark";
-  const noOfNotifications = 3;
+  const noOfNotifications = 5;
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/login", { replace: true });
+        return swal(
+          "Thanks for visiting the site",
+          "Log-out successful",
+          "warning"
+        );
+      })
+      .catch(() => {
+        return swal("Oops!", "Something went wrong", "error");
+      });
+  };
 
   return (
     <>
@@ -23,17 +46,6 @@ const Header = () => {
         </div>
 
         <div className="flex-none ">
-          {/* Multiple theme selection, uncomment this if you want to enable multiple themes selection, 
-                also includes corporate and retro themes in tailwind.config file */}
-
-          {/* <select className="select select-sm mr-4" data-choose-theme>
-                    <option disabled selected>Theme</option>
-                    <option value="light">Default</option>
-                    <option value="dark">Dark</option>
-                    <option value="corporate">Corporate</option>
-                    <option value="retro">Retro</option>
-                </select> */}
-
           {/* Light and dark theme selection toogle **/}
           <label className="swap ">
             <input type="checkbox" />
@@ -58,9 +70,9 @@ const Header = () => {
           </label>
 
           {/* Notification icon */}
-          <button className="btn btn-ghost ml-4  btn-circle">
+          {/* <button className="btn btn-ghost ml-4 btn-circle">
             <div className="indicator">
-              {/* <BellIcon className="h-6 w-6"/> */}
+              <BellIcon className="h-6 w-6"/>
               <FaRegBell className="h-6 w-6" />
               {noOfNotifications > 0 ? (
                 <span className="indicator-item badge badge-secondary badge-sm">
@@ -68,33 +80,88 @@ const Header = () => {
                 </span>
               ) : null}
             </div>
-          </button>
+          </button> */}
+          <div className="dropdown dropdown-bottom dropdown-end btn btn-ghost ml-3 btn-circle">
+            <div
+              tabIndex={0}
+              role="button"
+              className="py-2 md:py-3 px-2 w-full h-full"
+            >
+              <div className="indicator">
+                <FaRegBell className="h-6 w-6" />
+                {noOfNotifications > 0 ? (
+                  <span className="indicator-item badge badge-secondary badge-sm">
+                    {noOfNotifications}
+                  </span>
+                ) : null}
+              </div>
+            </div>
+            <div
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56 md:w-96"
+            >
+              <DropdownLayout title="Notification">
+                <div className="flex items-center gap-4 py-3 md:py-5 px-1 md:px-3">
+                  <div className="avatar">
+                    <div className="w-8 md:w-12 rounded-full">
+                      <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-gray-700 font-medium mb-2 text-xs md:text-base">
+                      Saidur Rahaman Change the password
+                    </p>
+                    <p className="text-xs text-gray-500">2 hours ago</p>
+                  </div>
+                </div>
+              </DropdownLayout>
+            </div>
+          </div>
 
           {/* Profile icon, opening menu on click */}
-          <div className="dropdown dropdown-end ml-4">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="https://placeimg.com/80/80/people" alt="profile" />
+          <div className="dropdown dropdown-end ml-3">
+            <label tabIndex={0} className="">
+              <div
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="flex justify-center items-center"
+              >
+                <div className="btn btn-ghost btn-circle avatar online">
+                  <div className="w-8 rounded-full">
+                    <img src={user?.photoURL} alt="profile" />
+                  </div>
+                </div>
+
+                <div className="flex items-center">
+                  <h3 className="">Admin</h3>
+                  {isExpanded ? (
+                    <IoChevronUp className="h-5 w-5" />
+                  ) : (
+                    <IoChevronDown className="h-5 w-5" />
+                  )}
+                </div>
               </div>
             </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li className="justify-between">
-                <Link to={"/app/settings-profile"}>
-                  Profile Settings
-                  <span className="badge">New</span>
-                </Link>
-              </li>
-              <li className="">
-                <Link to={"/app/settings-billing"}>Bill History</Link>
-              </li>
-              <div className="divider mt-0 mb-0"></div>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
+
+            {isExpanded && (
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li className="justify-between">
+                  <Link to={"/admin/myProfile"}>
+                    My Profile
+                    <span className="badge">New</span>
+                  </Link>
+                </li>
+                <li className="">
+                  <Link to={"/admin/settings"}>Settings</Link>
+                </li>
+                <div className="divider mt-0 mb-0"></div>
+                <li>
+                  <a onClick={handleLogOut}>Logout</a>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       </div>

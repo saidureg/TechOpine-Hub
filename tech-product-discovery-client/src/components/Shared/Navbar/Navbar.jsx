@@ -96,7 +96,7 @@ const Navbar = () => {
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56 md:w-96"
               >
                 <DropdownLayout title="Notification">
-                  <div className="flex  items-center gap-4 py-3 md:py-5 px-1 md:px-3">
+                  <div className="flex items-center gap-4 py-3 md:py-5 px-1 md:px-3">
                     <div className="avatar">
                       <div className="w-8 md:w-12 rounded-full">
                         <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />

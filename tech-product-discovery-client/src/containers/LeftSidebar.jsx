@@ -1,28 +1,54 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaXmark } from "react-icons/fa6";
 import SidebarSubmenu from "./SidebarSubmenu";
 
 const LeftSidebar = () => {
+  const location = useLocation();
   const routes = [
     {
       name: "Dashboard",
-      path: "/app/welcome",
+      path: "/admin/welcome",
       icon: <i className="fas fa-tachometer-alt"></i>,
     },
     {
       name: "Products",
-      path: "/app/products",
+      path: "/admin/products",
       icon: <i className="fas fa-box"></i>,
     },
     {
+      name: "Customers",
+      path: "/admin/customers",
+      icon: <i className="fas fa-users"></i>,
+    },
+    {
       name: "Orders",
-      path: "/app/orders",
+      path: "/admin/orders",
       icon: <i className="fas fa-shopping-cart"></i>,
     },
     {
-      name: "Customers",
-      path: "/app/customers",
-      icon: <i className="fas fa-users"></i>,
+      name: "Transactions",
+      path: "/admin/transactions",
+      icon: <i className="fas fa-bullhorn"></i>,
+    },
+    {
+      name: "Analytics",
+      path: "/admin/analytics",
+      icon: <i className="fas fa-chart-line"></i>,
+    },
+    {
+      name: "Reports",
+      path: "/admin/reports",
+      icon: <i className="fas fa-chart-bar"></i>,
+    },
+    {
+      name: "Settings",
+      path: "/admin/settings",
+      icon: <i className="fas fa-cog"></i>,
+    },
+    {
+      name: "Profile",
+      path: "/admin/profile",
+      icon: <i className="fas fa-user"></i>,
     },
   ];
 
