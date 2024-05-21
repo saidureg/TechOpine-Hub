@@ -1,56 +1,57 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaXmark } from "react-icons/fa6";
 import SidebarSubmenu from "./SidebarSubmenu";
+import routes from "../Routes/Sidebar";
 
 const LeftSidebar = () => {
   const location = useLocation();
-  const routes = [
-    {
-      name: "Dashboard",
-      path: "/admin/welcome",
-      icon: <i className="fas fa-tachometer-alt"></i>,
-    },
-    {
-      name: "Products",
-      path: "/admin/products",
-      icon: <i className="fas fa-box"></i>,
-    },
-    {
-      name: "Customers",
-      path: "/admin/customers",
-      icon: <i className="fas fa-users"></i>,
-    },
-    {
-      name: "Orders",
-      path: "/admin/orders",
-      icon: <i className="fas fa-shopping-cart"></i>,
-    },
-    {
-      name: "Transactions",
-      path: "/admin/transactions",
-      icon: <i className="fas fa-bullhorn"></i>,
-    },
-    {
-      name: "Analytics",
-      path: "/admin/analytics",
-      icon: <i className="fas fa-chart-line"></i>,
-    },
-    {
-      name: "Reports",
-      path: "/admin/reports",
-      icon: <i className="fas fa-chart-bar"></i>,
-    },
-    {
-      name: "Settings",
-      path: "/admin/settings",
-      icon: <i className="fas fa-cog"></i>,
-    },
-    {
-      name: "Profile",
-      path: "/admin/profile",
-      icon: <i className="fas fa-user"></i>,
-    },
-  ];
+  // const routes = [
+  //   {
+  //     name: "Dashboard",
+  //     path: "/admin/welcome",
+  //     icon: <i className="fas fa-tachometer-alt"></i>,
+  //   },
+  //   {
+  //     name: "Products",
+  //     path: "/admin/products",
+  //     icon: <i className="fas fa-box"></i>,
+  //   },
+  //   {
+  //     name: "Customers",
+  //     path: "/admin/customers",
+  //     icon: <i className="fas fa-users"></i>,
+  //   },
+  //   {
+  //     name: "Orders",
+  //     path: "/admin/orders",
+  //     icon: <i className="fas fa-shopping-cart"></i>,
+  //   },
+  //   {
+  //     name: "Transactions",
+  //     path: "/admin/transactions",
+  //     icon: <i className="fas fa-bullhorn"></i>,
+  //   },
+  //   {
+  //     name: "Analytics",
+  //     path: "/admin/analytics",
+  //     icon: <i className="fas fa-chart-line"></i>,
+  //   },
+  //   {
+  //     name: "Reports",
+  //     path: "/admin/reports",
+  //     icon: <i className="fas fa-chart-bar"></i>,
+  //   },
+  //   {
+  //     name: "Settings",
+  //     path: "/admin/settings",
+  //     icon: <i className="fas fa-cog"></i>,
+  //   },
+  //   {
+  //     name: "Profile",
+  //     path: "/admin/profile",
+  //     icon: <i className="fas fa-user"></i>,
+  //   },
+  // ];
 
   const close = () => {
     document.getElementById("left-sidebar-drawer").click();
@@ -76,7 +77,7 @@ const LeftSidebar = () => {
             DashWind
           </Link>{" "}
         </li>
-        {routes.map((route, k) => {
+        {routes?.map((route, k) => {
           return (
             <li className="" key={k}>
               {route.submenu ? (
