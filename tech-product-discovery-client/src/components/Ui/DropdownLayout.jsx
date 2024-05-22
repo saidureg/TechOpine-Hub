@@ -11,7 +11,7 @@ const DropdownLayout = ({ title, children }) => {
       </div>
       <div>{children}</div>
       <div>
-        <button className="w-full bg-red-600 text-white rounded-md p-2">
+        <button className="w-full bg-red-600 hover:bg-red-400/95 text-white rounded-md p-2">
           View all {title}
         </button>
       </div>

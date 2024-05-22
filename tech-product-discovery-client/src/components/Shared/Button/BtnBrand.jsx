@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 const BtnBrand = ({ text }) => {
   return (
-    <button className="btn border-none text-lg hover:text-[#E76F51] bg-[#E76F51] text-[#F1EAEA]">
+    <button className="btn border-none text-lg bg-[#E76F51] hover:bg-[#F4A261] text-[#F1EAEA]">
       {text}
     </button>
   );

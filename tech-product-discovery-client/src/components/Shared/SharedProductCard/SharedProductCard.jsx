@@ -30,7 +30,7 @@ const SharedProductCard = ({ product }) => {
   });
 
   return (
-    <div className="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+    <div className="relative flex w-full flex-col rounded-xl bg-base-100 hover:bg-base-200 bg-clip-border shadow-lg">
       <div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
         <img className="w-full h-[200px]" src={photoURL} alt={product_name} />
         <div className="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
@@ -61,12 +61,12 @@ const SharedProductCard = ({ product }) => {
 
         <div className="flex flex-col">
           <Link to={`/productDetails/${_id}`}>
-            <h5 className="text-xl antialiased font-medium leading-snug tracking-normal text-gray-900">
+            <h5 className="text-xl antialiased font-medium leading-snug tracking-normal ">
               {product_name}
             </h5>
           </Link>
 
-          <p className="md:h-[120px] text-base antialiased font-light leading-relaxed text-gray-700">
+          <p className="md:h-[120px] text-base antialiased font-light leading-relaxed ">
             {description.length > 120
               ? description.substring(0, 120) + "..."
               : description}

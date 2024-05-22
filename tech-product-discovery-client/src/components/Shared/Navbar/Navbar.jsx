@@ -17,6 +17,8 @@ import DropdownLayout from "../../Ui/DropdownLayout";
 import Modal from "../Modal/Modal";
 import UpdatedPassword from "../../UpdatedProfile/UpdatedPassword";
 import { useState } from "react";
+import ThemeToggle from "../../ThemeToggle/ThemeToggle";
+import BtnBrand from "../Button/BtnBrand";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -80,7 +82,11 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="flex justify-between items-center gap-5 md:gap-10">
+        <div className="flex justify-between items-center gap-4 md:gap-7">
+          {/* Light and dark theme selection toogle **/}
+          <ThemeToggle />
+
+          {/* Notification icon */}
           <div className="indicator">
             <span className="indicator-item badge badge-secondary">9+</span>
             <div className="dropdown dropdown-bottom dropdown-end">
@@ -93,20 +99,20 @@ const Navbar = () => {
               </div>
               <div
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56 md:w-96"
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-60 md:w-96"
               >
                 <DropdownLayout title="Notification">
                   <div className="flex items-center gap-4 py-3 md:py-5 px-1 md:px-3">
                     <div className="avatar">
                       <div className="w-8 md:w-12 rounded-full">
-                        <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        <img src={user?.photoURL} />
                       </div>
                     </div>
                     <div>
-                      <p className="text-gray-700 font-medium mb-2 text-xs md:text-base">
+                      <p className="font-medium mb-2 text-xs md:text-base">
                         Saidur Rahaman Change the password
                       </p>
-                      <p className="text-xs text-gray-500">2 hours ago</p>
+                      <p className="text-xs text-gray-400">2 hours ago</p>
                     </div>
                   </div>
                 </DropdownLayout>
@@ -122,7 +128,7 @@ const Navbar = () => {
                     <label tabIndex={0} className="avatar online rounded-full">
                       <div className="w-[50px] ">
                         <img
-                          className="w-full rounded-full bg-white cursor-pointer"
+                          className="w-full rounded-full bg-base-100 cursor-pointer"
                           src={user?.photoURL}
                         />
                       </div>
@@ -130,7 +136,7 @@ const Navbar = () => {
                   </div>
                   <ul
                     tabIndex={0}
-                    className="mt-3 z-[1] p-1 divide-y-2 space-y-4 md:p-2 shadow menu menu-sm dropdown-content bg-base-100 text-black rounded-box w-48 md:w-52 lg:w-56"
+                    className="mt-3 z-[1] p-1 divide-y-2 space-y-4 md:p-2 shadow menu menu-sm dropdown-content bg-base-100 text-black dark:text-gray-400 rounded-box w-48 md:w-52 lg:w-56"
                   >
                     {/* <li>
                       <a className="gap-3 text-sm md:text-base lg:text-xl">
@@ -180,10 +186,10 @@ const Navbar = () => {
                         />
                       </Modal>
                     </li>
-                    <div className=" px-3 pt-2 text-base md:text-lg lg:text-xl">
+                    <div className="px-3 pt-2 text-base md:text-lg lg:text-xl">
                       <button
                         onClick={handleLogOut}
-                        className="btn hover:text-[#7B014C] bg-[#7B014C] text-[#F1EAEA]"
+                        className="btn btn-primary w-full"
                       >
                         <TbLogout className="text-xl" /> Log Out
                       </button>
@@ -193,9 +199,7 @@ const Navbar = () => {
               </>
             ) : (
               <Link to="/login">
-                <button className="btn border-none text-lg hover:text-[#E76F51] bg-[#E76F51] text-[#F1EAEA]">
-                  Login
-                </button>
+                <BtnBrand text="Login" />
               </Link>
             )}
           </div>

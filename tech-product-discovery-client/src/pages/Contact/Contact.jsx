@@ -19,7 +19,7 @@ const Contact = () => {
       <Helmet>
         <title>TechOpine - Contact</title>
       </Helmet>
-      <div className="bg-[#fbf8ef] mb-10">
+      <div className="bg-[#fbf8ef] dark:bg-[#20212c] mb-10">
         <h6 className="text-[#9b804e] uppercase text-center mb-6 font-playfair text-sm pt-10">
           Contact Us
         </h6>
@@ -32,7 +32,7 @@ const Contact = () => {
         </p>
         <div className="flex flex-col lg:flex-row mt-12">
           <div className="w-full lg:w-2/3 ">
-            <p className="text-center text-xl text-gray-700 my-5">
+            <p className="text-center text-xl text-gray-700 dark:text-gray-400 my-5">
               If you have any questions, just fill in the contact form, and we
               will answer you shortly.
             </p>
@@ -137,7 +137,7 @@ const Contact = () => {
                   <h3 className="text-xl lg:text-3xl my-6 uppercase font-semibold">
                     Email
                   </h3>
-                  <p className="text-xs lg:text-base text-red-800 opacity-80">
+                  <p className="text-xs lg:text-base text-red-800 dark:text-gray-400 opacity-80">
                     {user?.email}
                   </p>
                 </div>
@@ -163,7 +163,7 @@ const Contact = () => {
                   <h3 className="text-xl lg:text-3xl my-6 uppercase font-semibold">
                     Facebook
                   </h3>
-                  <p className="text-xs lg:text-base text-red-800 opacity-80">
+                  <p className="text-xs lg:text-base text-red-800 dark:text-gray-400 opacity-80">
                     Like Us
                   </p>
                 </div>
@@ -176,7 +176,7 @@ const Contact = () => {
                   <h3 className="text-xl lg:text-3xl my-6 uppercase font-semibold">
                     Instagram
                   </h3>
-                  <p className="text-xs lg:text-base text-red-800 opacity-80">
+                  <p className="text-xs lg:text-base text-red-800 dark:text-gray-400 opacity-80">
                     Follow Us
                   </p>
                 </div>
