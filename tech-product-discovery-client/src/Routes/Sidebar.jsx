@@ -3,6 +3,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { AiOutlineSecurityScan } from "react-icons/ai";
 import { LiaUserCogSolid } from "react-icons/lia";
 import { CiDiscount1 } from "react-icons/ci";
+import { MdOutlineBugReport } from "react-icons/md";
 import {
   HiOutlineSquares2X2,
   HiOutlineTableCells,
@@ -62,6 +63,11 @@ const routes = [
     path: "/admin/coupons", // url
     icon: <CiDiscount1 className={iconClasses} />, // icon component
     name: "Coupons", // name that appear in Sidebar
+  },
+  {
+    path: "/admin/reports",
+    icon: <MdOutlineBugReport />,
+    name: "Reports",
   },
   {
     path: "/admin/calendar", // url

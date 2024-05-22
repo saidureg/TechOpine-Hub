@@ -28,7 +28,7 @@ const Navbar = () => {
       <Navlinks path="/" route="Home" />
       <Navlinks path="/product" route="Product" />
       <Navlinks path="/contact" route="Contact" />
-      <Navlinks path="/admin/layout" route="Admin Dashboard" />
+      <Navlinks path="/admin/dashboard" route="Admin Dashboard" />
     </div>
   );
   const handleLogOut = () => {

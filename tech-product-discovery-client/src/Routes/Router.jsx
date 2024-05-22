@@ -29,6 +29,7 @@ import ViewCoupon from "../pages/Dashboard/Admin/ManageCoupons/ViewCoupon";
 import Payment from "../pages/Dashboard/User/Payment/Payment";
 import Settings from "../pages/Dashboard/Settings/Settings";
 import Layout from "../containers/Layout";
+import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
 
 const Router = createBrowserRouter([
   {
@@ -99,10 +100,6 @@ const Router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/admin/layout",
-    element: <Layout />,
-  },
-  {
     path: "dashboard",
     element: (
       <PrivateRoute>
@@ -141,7 +138,12 @@ const Router = createBrowserRouter([
       // for Moderator
       {
         path: "moderatorProfile",
-        element: <UserProfile />,
+        element: (
+          <ModeratorRoute>
+            {" "}
+            <UserProfile />{" "}
+          </ModeratorRoute>
+        ),
       },
       {
         path: "productReview",
@@ -162,7 +164,12 @@ const Router = createBrowserRouter([
       // for Admin
       {
         path: "adminProfile",
-        element: <UserProfile />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <UserProfile />{" "}
+          </AdminRoute>
+        ),
       },
       {
         path: "statistics",
@@ -215,6 +222,24 @@ const Router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coupon/${params.id}`),
+      },
+    ],
+  },
+  {
+    path: "admin/dashboard",
+    element: (
+      <PrivateRoute>
+        <Layout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "admin/dashboard",
+        element: (
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        ),
       },
     ],
   },

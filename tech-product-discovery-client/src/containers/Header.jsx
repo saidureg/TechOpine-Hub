@@ -1,18 +1,19 @@
 import { Link, useNavigate } from "react-router-dom";
-import { MdSunny } from "react-icons/md";
-import { FaMoon, FaRegBell, FaBars } from "react-icons/fa";
+// import { MdSunny } from "react-icons/md";
+import { FaRegBell, FaBars } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
 import swal from "sweetalert";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { useState } from "react";
 import DropdownLayout from "../components/Ui/DropdownLayout";
+import ThemeToggle from "../components/ThemeToggle/ThemeToggle";
 
 const Header = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
   const pageTitle = "Dashboard";
-  const currentTheme = "dark";
+  // const currentTheme = "dark";
   const noOfNotifications = 5;
 
   const handleLogOut = () => {
@@ -47,9 +48,9 @@ const Header = () => {
 
         <div className="flex-none ">
           {/* Light and dark theme selection toogle **/}
-          <label className="swap ">
+          {/* <label className="swap ">
             <input type="checkbox" />
-            {/* <SunIcon data-set-theme="light" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 " + (currentTheme === "dark" ? "swap-on" : "swap-off")} /> */}
+            <SunIcon data-set-theme="light" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 " + (currentTheme === "dark" ? "swap-on" : "swap-off")} />
             <MdSunny
               data-set-theme="dark"
               data-act-class="ACTIVECLASS"
@@ -58,7 +59,7 @@ const Header = () => {
                 (currentTheme === "dark" ? "swap-on" : "swap-off")
               }
             />
-            {/* <MoonIcon data-set-theme="dark" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 "+(currentTheme === "light" ? "swap-on" : "swap-off")} /> */}
+            <MoonIcon data-set-theme="dark" data-act-class="ACTIVECLASS" className={"fill-current w-6 h-6 "+(currentTheme === "light" ? "swap-on" : "swap-off")} />
             <FaMoon
               data-set-theme="light"
               data-act-class="ACTIVECLASS"
@@ -67,7 +68,8 @@ const Header = () => {
                 (currentTheme === "light" ? "swap-on" : "swap-off")
               }
             />
-          </label>
+          </label> */}
+          <ThemeToggle />
 
           {/* Notification icon */}
           {/* <button className="btn btn-ghost ml-4 btn-circle">

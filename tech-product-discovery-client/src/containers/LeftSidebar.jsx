@@ -74,7 +74,7 @@ const LeftSidebar = () => {
               src="/logo.png"
               alt=" Logo"
             />
-            DashWind
+            TechOpine
           </Link>{" "}
         </li>
         {routes?.map((route, k) => {
