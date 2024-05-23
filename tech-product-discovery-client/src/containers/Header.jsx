@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { MdSunny } from "react-icons/md";
 import { FaRegBell, FaBars } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
@@ -7,12 +7,15 @@ import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 import { useState } from "react";
 import DropdownLayout from "../components/Ui/DropdownLayout";
 import ThemeToggle from "../components/ThemeToggle/ThemeToggle";
+import { routesToTitle } from "../utils/routesToTitle";
 
 const Header = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
-  const pageTitle = "Dashboard";
+  const path = location.pathname;
+  const pageTitle = routesToTitle[path] || "Dashboard";
   // const currentTheme = "dark";
   const noOfNotifications = 5;
 
@@ -38,17 +41,21 @@ const Header = () => {
         <div className="flex-1">
           <label
             htmlFor="left-sidebar-drawer"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="bg-primary text-white px-2 py-1 rounded-md md:btn md:btn-primary drawer-button lg:hidden"
           >
             {/* <Bars3Icon className="h-5 inline-block w-5" /> */}
-            <FaBars className="h-5 inline-block w-5" />
+            <FaBars className="h-5 inline-block w-4 md:w-5" />
           </label>
-          <h1 className="text-2xl font-semibold ml-2">{pageTitle}</h1>
+          <h1 className="text-lg md:text-2xl font-semibold mx-1">
+            {pageTitle}
+          </h1>
         </div>
 
-        <div className="flex-none ">
+        <div className="flex-none">
           {/* Light and dark theme selection toogle **/}
-          <ThemeToggle />
+          <div>
+            <ThemeToggle />
+          </div>
 
           {/* Notification icon */}
           {/* <button className="btn btn-ghost ml-4 btn-circle">
@@ -62,14 +69,14 @@ const Header = () => {
               ) : null}
             </div>
           </button> */}
-          <div className="dropdown dropdown-bottom dropdown-end btn btn-ghost ml-3 btn-circle">
+          <div className="dropdown dropdown-bottom dropdown-end btn btn-ghost ml-0 md:ml-3 btn-circle">
             <div
               tabIndex={0}
               role="button"
-              className="py-2 md:py-3 px-2 w-full h-full"
+              className="py-3 px-0 md:px-2 w-full h-full"
             >
               <div className="indicator">
-                <FaRegBell className="h-6 w-6" />
+                <FaRegBell className="h-5 md:h-6 w-5 md:w-6" />
                 {noOfNotifications > 0 ? (
                   <span className="indicator-item badge badge-secondary badge-sm">
                     {noOfNotifications}
@@ -82,7 +89,7 @@ const Header = () => {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-56 md:w-96"
             >
               <DropdownLayout title="Notification">
-                <div className="flex items-center gap-4 py-3 md:py-5 px-1 md:px-3">
+                <div className="flex items-center gap-4 py-3 md:py-5 px-0 md:px-3">
                   <div className="avatar">
                     <div className="w-8 md:w-12 rounded-full">
                       <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
@@ -100,7 +107,7 @@ const Header = () => {
           </div>
 
           {/* Profile icon, opening menu on click */}
-          <div className="dropdown dropdown-end ml-3">
+          <div className="dropdown dropdown-end ml-0 md:ml-3">
             <label tabIndex={0} className="">
               <div
                 onClick={() => setIsExpanded(!isExpanded)}
@@ -113,11 +120,11 @@ const Header = () => {
                 </div>
 
                 <div className="flex items-center">
-                  <h3 className="">Admin</h3>
+                  <h3 className="text-sm md:text-base">Admin</h3>
                   {isExpanded ? (
-                    <IoChevronUp className="h-5 w-5" />
+                    <IoChevronUp className="h-5 w-4 md:w-5" />
                   ) : (
-                    <IoChevronDown className="h-5 w-5" />
+                    <IoChevronDown className="h-5 w-4 md:w-5" />
                   )}
                 </div>
               </div>

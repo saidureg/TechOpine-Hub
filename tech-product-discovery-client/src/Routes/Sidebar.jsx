@@ -31,7 +31,6 @@ const routes = [
   {
     path: "/admin/dashboard",
     icon: <HiOutlineSquares2X2 className={iconClasses} />,
-    // icon: <BeakerIcon className="h-6 w-6 text-blue-500" />,
     name: "Dashboard",
   },
   {
@@ -45,7 +44,7 @@ const routes = [
     name: "Transactions", // name that appear in Sidebar
   },
   {
-    path: "/admin/charts", // url
+    path: "/admin/analytics", // url
     icon: <HiOutlineChartBar className={iconClasses} />, // icon component
     name: "Analytics", // name that appear in Sidebar
   },

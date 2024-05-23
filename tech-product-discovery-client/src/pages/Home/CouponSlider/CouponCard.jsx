@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { CiBadgeDollar } from "react-icons/ci";
 const CouponCard = ({ data }) => {
   return (
-    <div className="bg-pink-400 border rounded-2xl md:w-3/4 lg:w-1/2 mx-auto mt-10">
+    <div className="bg-pink-400 dark:bg-pink-800 border rounded-2xl md:w-3/4 lg:w-1/2 mx-auto mt-10">
       <div className="card-body  text-center">
         <div className="text-3xl font-bold mb-4 font-playfair">
           Get Special Discount!

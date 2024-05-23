@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import LeftSidebar from "./LeftSidebar";
-import PageContent from "./PageContent";
+// import PageContent from "./PageContent";
+import Header from "./Header";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
@@ -16,7 +18,15 @@ const Layout = () => {
           className="drawer-toggle"
         />
         <LeftSidebar />
-        <PageContent />
+        {/* <PageContent /> */}
+        <div className="drawer-content flex flex-col ">
+          <Header />
+          <main className="flex-1 overflow-y-auto md:pt-4 pt-4 px-6  bg-base-200">
+            {/* <h3>Page Content</h3>
+            <div className="h-16"></div> */}
+            <Outlet />
+          </main>
+        </div>
         {/* <Outlet /> */}
       </div>
 

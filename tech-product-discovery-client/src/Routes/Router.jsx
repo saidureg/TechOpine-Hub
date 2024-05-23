@@ -30,6 +30,8 @@ import Payment from "../pages/Dashboard/User/Payment/Payment";
 import Settings from "../pages/Dashboard/Settings/Settings";
 import Layout from "../containers/Layout";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
+import Transactions from "../pages/Dashboard/Admin/Transactions/Transactions";
+import Leads from "../pages/Dashboard/Admin/Leads/Leads";
 
 const Router = createBrowserRouter([
   {
@@ -226,7 +228,7 @@ const Router = createBrowserRouter([
     ],
   },
   {
-    path: "admin/dashboard",
+    path: "admin",
     element: (
       <PrivateRoute>
         <Layout />
@@ -234,10 +236,34 @@ const Router = createBrowserRouter([
     ),
     children: [
       {
-        path: "admin/dashboard",
+        path: "dashboard",
         element: (
           <AdminRoute>
             <AdminDashboard />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "leads",
+        element: (
+          <AdminRoute>
+            <Leads />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "transactions",
+        element: (
+          <AdminRoute>
+            <Transactions />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
           </AdminRoute>
         ),
       },

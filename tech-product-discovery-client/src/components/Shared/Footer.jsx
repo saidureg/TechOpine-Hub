@@ -10,7 +10,7 @@ const Footer = () => {
             <FaLocationDot className="text-2xl text-[#deaa86]" />
             <div>
               <h4 className="text-[#8b8b8b] text-xl uppercase">Address</h4>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-300 font-medium">
                 176, Shaheed Syed Nazrul Islam Sarani
                 <br /> Dhaka - 1000, Bangladesh
               </p>
@@ -20,7 +20,7 @@ const Footer = () => {
             <FiPhoneCall className="text-xl text-[#deaa86]" />
             <div>
               <h4 className="text-[#8b8b8b] text-xl uppercase">Call Us</h4>
-              <p className="text-gray-500 font-medium">
+              <p className="text-gray-500 dark:text-gray-300 font-medium">
                 +88 02 223375551, +88 02 223375552 <br /> +880 17600 77944 +880
                 17600 77945
               </p>
@@ -46,7 +46,7 @@ const Footer = () => {
       </footer>
       <footer className="footer px-10 py-4 border-t bg-base-200 border-base-300 max-w-screen-xl mx-auto">
         <aside className="items-center grid-flow-col">
-          <p className=" font-bold text-[#0A0826]">
+          <p className=" font-bold text-[#0A0826] dark:text-gray-300">
             Tech
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#E76F51] to-violet-500">
               Wave
