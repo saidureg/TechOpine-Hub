@@ -32,6 +32,8 @@ import Layout from "../containers/Layout";
 import AdminDashboard from "../pages/Dashboard/Admin/AdminDashboard/AdminDashboard";
 import Transactions from "../pages/Dashboard/Admin/Transactions/Transactions";
 import Leads from "../pages/Dashboard/Admin/Leads/Leads";
+import Analytics from "../pages/Dashboard/Admin/Analytics/Analytics";
+import Integration from "../pages/Dashboard/Admin/Integration/Integration";
 
 const Router = createBrowserRouter([
   {
@@ -256,6 +258,22 @@ const Router = createBrowserRouter([
         element: (
           <AdminRoute>
             <Transactions />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "analytics",
+        element: (
+          <AdminRoute>
+            <Analytics />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "integration",
+        element: (
+          <AdminRoute>
+            <Integration />
           </AdminRoute>
         ),
       },
