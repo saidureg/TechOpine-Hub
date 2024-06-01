@@ -1,5 +1,8 @@
 import AmountStats from "./Components/AmountStats";
+import BarChart from "./Components/BarChart";
 import DashboardTopBar from "./Components/DashboardTopBar";
+import LineChart from "./Components/LineChart";
+import PageStats from "./Components/PageStats";
 
 const AdminDashboard = () => {
   return (
@@ -16,16 +19,15 @@ const AdminDashboard = () => {
     </div> */}
 
       {/** ---------------------- Different charts ------------------------- */}
-      {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-      <LineChart />
-      <BarChart />
-    </div> */}
+      <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+        <LineChart />
+        <BarChart />
+      </div>
 
       {/** ---------------------- Different stats content 2 ------------------------- */}
 
       <div className="grid lg:grid-cols-2 mt-10 grid-cols-1 gap-6">
-        {/* <AmountStats /> */}
-        {/* <PageStats /> */}
+        <PageStats />
         <AmountStats />
       </div>
 
