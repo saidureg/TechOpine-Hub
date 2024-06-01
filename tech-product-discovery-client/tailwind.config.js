@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+  ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
@@ -18,8 +22,8 @@ export default {
     themes: [
       {
         light: {
-          primary: "#a855f7",
-          secondary: "#f6d860",
+          primary: "#4A00FF",
+          secondary: "#FF00D3",
           accent: "#37cdbe",
           neutral: "#3d4451",
           "base-100": "#ffffff",
