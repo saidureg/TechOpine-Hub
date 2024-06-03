@@ -10,6 +10,8 @@ import {
   HiOutlineCircleStack,
   HiOutlineUsers,
 } from "react-icons/hi2";
+import UserChannels from "./Components/UserChannels";
+import DoughnutChart from "./Components/DoughnutChart";
 
 const AdminDashboard = () => {
   const statsData = [
@@ -66,10 +68,10 @@ const AdminDashboard = () => {
 
       {/** ---------------------- User source channels table  ------------------------- */}
 
-      {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-      <UserChannels />
-      <DoughnutChart />
-    </div> */}
+      <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+        <UserChannels />
+        <DoughnutChart />
+      </div>
     </>
   );
 };
