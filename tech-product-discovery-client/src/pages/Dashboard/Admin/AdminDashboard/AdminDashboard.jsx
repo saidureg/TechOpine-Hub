@@ -1,9 +1,9 @@
-import AmountStats from "./Components/AmountStats";
+// import AmountStats from "./Components/AmountStats";
 import BarChart from "./Components/BarChart";
 import DashboardStats from "./Components/DashboardStats";
 import DashboardTopBar from "./Components/DashboardTopBar";
 import LineChart from "./Components/LineChart";
-import PageStats from "./Components/PageStats";
+// import PageStats from "./Components/PageStats";
 import {
   HiOutlineUserGroup,
   HiOutlineCreditCard,
