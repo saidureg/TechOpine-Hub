@@ -34,6 +34,7 @@ import Transactions from "../pages/Dashboard/Admin/Transactions/Transactions";
 import Leads from "../pages/Dashboard/Admin/Leads/Leads";
 import Analytics from "../pages/Dashboard/Admin/Analytics/Analytics";
 import Integration from "../pages/Dashboard/Admin/Integration/Integration";
+import Team from "../pages/Dashboard/Admin/AdminDashboard/Components/Team";
 
 const Router = createBrowserRouter([
   {
@@ -282,6 +283,14 @@ const Router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "settings-team",
+        element: (
+          <AdminRoute>
+            <Team />
           </AdminRoute>
         ),
       },
