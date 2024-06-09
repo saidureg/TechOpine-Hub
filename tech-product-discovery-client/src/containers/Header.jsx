@@ -119,7 +119,7 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center">
+                <div className="flex items-center cursor-pointer">
                   <h3 className="text-sm md:text-base">Admin</h3>
                   {isExpanded ? (
                     <IoChevronUp className="h-5 w-4 md:w-5" />

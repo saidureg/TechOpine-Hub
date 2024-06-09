@@ -9,5 +9,5 @@ export const routesToTitle = {
   "/admin/orders": "Orders",
   "/admin/customers": "Customers",
   "/admin/myProfile": "My Profile",
-  "/admin/settings": "Settings",
+  "/admin/settings-team": "Team",
 };
