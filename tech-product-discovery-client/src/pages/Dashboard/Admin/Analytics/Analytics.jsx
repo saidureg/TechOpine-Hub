@@ -2,6 +2,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 import { useState } from "react";
 import StackBarChart from "./Components/StackBarChart";
 import BarChart from "./Components/BarChart";
+import DoughnutChart from "./Components/DoughnutChart";
 
 const Analytics = () => {
   const [dateValue, setDateValue] = useState({
@@ -32,10 +33,10 @@ const Analytics = () => {
         <BarChart />
       </div>
 
-      {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-              <DoughnutChart />
-              <PieChart />
-          </div> */}
+      <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+        <DoughnutChart />
+        {/* <PieChart /> */}
+      </div>
 
       {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
               <ScatterChart />
