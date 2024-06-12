@@ -3,6 +3,7 @@ import { useState } from "react";
 import StackBarChart from "./Components/StackBarChart";
 import BarChart from "./Components/BarChart";
 import DoughnutChart from "./Components/DoughnutChart";
+import PieChart from "./Components/PieChart";
 
 const Analytics = () => {
   const [dateValue, setDateValue] = useState({
@@ -35,7 +36,7 @@ const Analytics = () => {
 
       <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
         <DoughnutChart />
-        {/* <PieChart /> */}
+        <PieChart />
       </div>
 
       {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">

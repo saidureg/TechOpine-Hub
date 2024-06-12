@@ -5,8 +5,6 @@ const DashboardStats = ({ title, icon, value, description, colorIndex }) => {
   const COLORS = ["secondary", "primary"];
 
   const getDescStyle = () => {
-    console.log(description.includes("↗︎"));
-    console.log(description.includes("↙"));
     if (description.includes("↗︎"))
       return "font-bold text-green-700 dark:text-green-300";
     else if (description.includes("↙"))
