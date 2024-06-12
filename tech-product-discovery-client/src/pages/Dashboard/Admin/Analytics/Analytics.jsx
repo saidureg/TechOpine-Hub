@@ -4,6 +4,7 @@ import StackBarChart from "./Components/StackBarChart";
 import BarChart from "./Components/BarChart";
 import DoughnutChart from "./Components/DoughnutChart";
 import PieChart from "./Components/PieChart";
+import ScatterChart from "./Components/ScatterChart";
 
 const Analytics = () => {
   const [dateValue, setDateValue] = useState({
@@ -39,10 +40,10 @@ const Analytics = () => {
         <PieChart />
       </div>
 
-      {/* <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
-              <ScatterChart />
-              <LineChart />
-          </div> */}
+      <div className="grid lg:grid-cols-2 mt-4 grid-cols-1 gap-6">
+        <ScatterChart />
+        {/* <LineChart /> */}
+      </div>
     </>
   );
 };
