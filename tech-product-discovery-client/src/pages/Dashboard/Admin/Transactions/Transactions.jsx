@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import TitleCard from "../../../../components/Cards/TitleCard";
 import SearchBar from "../../../../components/Input/SearchBar";
+import { HiOutlineFunnel, HiOutlineXMark } from "react-icons/hi2";
+import moment from "moment";
+import PropTypes from "prop-types";
+import { RECENT_TRANSACTIONS } from "../../../../utils/dummyData";
 
 const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
   const [filterParam, setFilterParam] = useState("");
@@ -24,7 +28,7 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
     } else {
       applySearch(searchText);
     }
-  }, [searchText]);
+  }, [searchText, applySearch, applyFilter]);
 
   return (
     <div className="inline-block float-right">
@@ -39,12 +43,12 @@ const TopSideButtons = ({ removeFilter, applyFilter, applySearch }) => {
           className="btn btn-xs mr-2 btn-active btn-ghost normal-case"
         >
           {filterParam}
-          <XMarkIcon className="w-4 ml-2" />
+          <HiOutlineXMark className="w-4 ml-2" />
         </button>
       )}
       <div className="dropdown dropdown-bottom dropdown-end">
         <label tabIndex={0} className="btn btn-sm btn-outline">
-          <FunnelIcon className="w-5 mr-2" />
+          <HiOutlineFunnel className="w-5 mr-2" />
           Filter
         </label>
         <ul
@@ -145,6 +149,12 @@ const Transactions = () => {
       </TitleCard>
     </>
   );
+};
+
+TopSideButtons.propTypes = {
+  removeFilter: PropTypes.func,
+  applyFilter: PropTypes.func,
+  applySearch: PropTypes.func,
 };
 
 export default Transactions;
