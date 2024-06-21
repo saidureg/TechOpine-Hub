@@ -1,4 +1,3 @@
-// const moment = require("moment");
 import moment from "moment";
 
 const CALENDAR_INITIAL_EVENTS = [
