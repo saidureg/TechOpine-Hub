@@ -54,8 +54,6 @@ const INITIAL_INTEGRATION_LIST = [
 ];
 
 const Integration = () => {
-  // const dispatch = useDispatch();
-
   const [integrationList, setIntegrationList] = useState(
     INITIAL_INTEGRATION_LIST
   );
@@ -68,14 +66,6 @@ const Integration = () => {
         return i;
       })
     );
-    // dispatch(
-    //   showNotification({
-    //     message: `${integration.name} ${
-    //       integration.isActive ? "disabled" : "enabled"
-    //     }`,
-    //     status: 1,
-    //   })
-    // );
   };
 
   return (
