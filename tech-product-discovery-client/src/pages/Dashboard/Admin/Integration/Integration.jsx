@@ -1,10 +1,8 @@
 const Integration = () => {
   return (
-    <>
-      <div>
-        <h3>Integration</h3>
-      </div>
-    </>
+    <div>
+      <h3>Integration</h3>
+    </div>
   );
 };
 
