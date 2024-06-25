@@ -16,7 +16,6 @@ import {
   HiOutlineUser,
   HiOutlineCog6Tooth,
   HiOutlineDocumentDuplicate,
-  HiOutlineBolt,
   HiOutlineChartBar,
   HiOutlineCurrencyDollar,
   HiOutlineKey,
@@ -47,11 +46,6 @@ const routes = [
     path: "/admin/analytics", // url
     icon: <HiOutlineChartBar className={iconClasses} />, // icon component
     name: "Analytics", // name that appear in Sidebar
-  },
-  {
-    path: "/admin/integration", // url
-    icon: <HiOutlineBolt className={iconClasses} />, // icon component
-    name: "Integration", // name that appear in Sidebar
   },
   {
     path: "/admin/users", // url
